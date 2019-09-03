@@ -1,5 +1,12 @@
 # Synonimizator
 
+Narzędzie do synonimizacji treści przy użyciu spin-tagów.
+
+Synonimizator online pomaga przy dodawaniu unikalnych treści np do seokatalogów.
+Ze stworzonego przez Ciebie wcześniej tekstu z synonimami, wybiera je losowo, dzięki czemu wygenerowany opis strony za każdym razem jest inny.
+
+Projekt dostępny online pod adresem https://synonimizator.wyremski.pl/
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.2.
 
 ## Development server
