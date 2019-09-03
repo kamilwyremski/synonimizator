@@ -1,0 +1,18 @@
+#main{
+    background-color: rgba(247,239,206,0.8); margin-top: 50px; margin-bottom: 50px; padding-top: 10px; padding-bottom: 20px; box-shadow: 1px 1px 4px rgba(0,0,0,0.5); border-radius: 4px;
+}
+#description_input_div, #description_input, #description_output{
+    height: 200px;
+}
+.btn{
+	white-space: normal;
+}
+#alert_copy_to_clipboard{
+    position: fixed; right: 10px; bottom: 10px; z-index: 1000000000;
+}
+.ads{
+    text-align: center; padding: 10px 0;
+}
+footer p, footer p a{
+    color: white;
+}
