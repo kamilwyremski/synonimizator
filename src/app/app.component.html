@@ -29,21 +29,21 @@
       <div class="form-group">
         <label for="title_output">Tytuł strony - wyjście</label>
         <div class="input-group">
-          <textarea id="title_output" readonly class="form-control" [(ngModel)]="title_output" (click)="$event.target.select()"></textarea>
+          <textarea id="title_output" readonly class="form-control" [(ngModel)]="title_output"></textarea>
           <button class="input-group-text btn btn-secondary" (click)="copyTitleToClipboard();$event.target.blur()">Kopiuj</button>
         </div>
       </div>
       <div class="form-group">
         <label for="keywords_output">Słowa kluczowe - wyjście</label>
         <div class="input-group">
-          <textarea id="keywords_output" readonly class="form-control" [(ngModel)]="keywords_output" (click)="$event.target.select()"></textarea>
+          <textarea id="keywords_output" readonly class="form-control" [(ngModel)]="keywords_output"></textarea>
           <button class="input-group-text btn btn-secondary" (click)="copyKeywordsToClipboard();$event.target.blur()">Kopiuj</button>
         </div>
       </div>
       <div class="form-group">
         <label for="description_output">Opis - wyjście</label>
         <div class="input-group">
-          <textarea id="description_output" class="form-control" readonly [(ngModel)]="description_output" (click)="$event.target.select()"></textarea>   
+          <textarea id="description_output" class="form-control" readonly [(ngModel)]="description_output"></textarea>   
           <button class="input-group-text btn btn-secondary" (click)="copyDescriptionToClipboard();$event.target.blur()">Kopiuj<br>do<br>schowka</button>
         </div>
       </div>
