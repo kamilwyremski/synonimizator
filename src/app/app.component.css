@@ -19,3 +19,9 @@
 footer p, footer p a{
     color: white;
 }
+@media(max-width: 576px) {
+    #main{
+        margin:0;
+    }
+}
+
