@@ -21,7 +21,7 @@ footer p, footer p a{
 }
 @media(max-width: 576px) {
     #main{
-        margin:0;
+        margin:0; word-break: break-word;    word-wrap: break-word;
     }
 }
 
