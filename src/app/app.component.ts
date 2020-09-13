@@ -64,7 +64,7 @@ export class AppComponent {
   descriptionInputHeight = 200;
   generateDescription(){
     this.description_output = '';
-    let description = this.description_input.replace(/<span class="text-primary">{/g, "{").replace(/}<\/span>/g, "}");
+    let description = this.description_input.replace(/<span class="text-success">{/g, "{").replace(/}<\/span>/g, "}");
 		let char = 0;
 		do{
 			char = description.indexOf('{');
@@ -80,7 +80,7 @@ export class AppComponent {
   @ViewChild('descriptionInput',{static: false}) descriptionInput: ElementRef; 
   blurDescription(){
     this.descriptionIsEdited = false;
-    this.description_input_div = this.description_input.replace(/{/g, "<span class='text-primary'>{").replace(/}/g, "}</span>");
+    this.description_input_div = this.description_input.replace(/{/g, "<span class='text-success'>{").replace(/}/g, "}</span>");
     this.descriptionInputHeight = this.descriptionInput.nativeElement.offsetHeight;
     this.cookieService.set('description_input_div', this.description_input_div);
   }
