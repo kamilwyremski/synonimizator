@@ -18,6 +18,7 @@ export class AppComponent implements OnInit{
   descriptionInput = '';
   descriptionInputDiv = '';
   alertCopyToClipboard = false;
+  alertCopyToClipboardTimeout;
   titleOutput = '';
   keywordsOutput = '';
   descriptionOutput = '';
@@ -33,7 +34,10 @@ export class AppComponent implements OnInit{
 
   copyToClipboard(val: string){
     this.alertCopyToClipboard = true;
-    setTimeout(() => this.alertCopyToClipboard=false, 1500);
+    if(this.alertCopyToClipboardTimeout){
+      clearTimeout(this.alertCopyToClipboardTimeout);
+    }
+    this.alertCopyToClipboardTimeout = setTimeout(() => this.alertCopyToClipboard=false, 1500);
     const selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';
     selBox.style.left = '0';
