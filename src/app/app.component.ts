@@ -80,7 +80,7 @@ export class AppComponent {
   @ViewChild('descriptionInput',{static: false}) descriptionInput: ElementRef; 
   blurDescription(){
     this.descriptionIsEdited = false;
-    this.description_input_div = this.description_input.replace(/{/g, "<span class='text-success'>{").replace(/}/g, "}</span>");
+    this.description_input_div = this.description_input.replace(/{/g, "<span class='text-success'>{").replace(/}/g, "}</span>").replace(/(?:\r\n|\r|\n)/g, '<br>');
     this.descriptionInputHeight = this.descriptionInput.nativeElement.offsetHeight;
     this.cookieService.set('description_input_div', this.description_input_div);
   }
