@@ -1,6 +1,6 @@
-import { TestBed, ComponentFixture, async } from '@angular/core/testing';
+import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { By } from "@angular/platform-browser";
+import { By } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -8,7 +8,7 @@ describe('AppComponent', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [ FormsModule ],
       declarations: [ AppComponent ]
@@ -16,7 +16,7 @@ describe('AppComponent', () => {
     .compileComponents();
   }));
 
-  beforeEach(() => { 
+  beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -26,37 +26,37 @@ describe('AppComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render title in a h1 tag', () => { //6
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
+  it('should render title in a h1 tag', () => {
+    const fixture2 = TestBed.createComponent(AppComponent);
+    fixture2.detectChanges();
+    const compiled = fixture2.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('Synonimizator online');
   });
 
   it('should generate random title', () => {
-    component.title_input = 'Tytuł 1\nTytuł 2\nTytuł 3';
+    component.titleInput = 'Tytuł 1\nTytuł 2\nTytuł 3';
     component.generateTitle();
     expect(
-      ["Tytuł 1","Tytuł 2","Tytuł 3"].includes(component.title_output)
+      ['Tytuł 1','Tytuł 2','Tytuł 3'].includes(component.titleOutput)
     ).toBe(true);
   });
 
   it('should generate random keywords', () => {
-    let keywords_array = ['Słowo 3', 'Słowo 2', 'Słowo 1'];
-    component.keywords_input = keywords_array.join(',');
+    const keywordsArray = ['Słowo 3', 'Słowo 2', 'Słowo 1'];
+    component.keywordsInput = keywordsArray.join(',');
     component.generateKeywords();
-    let keywords_output = component.keywords_output.split(',').map(Function.prototype.call, String.prototype.trim).sort().join(',')
-    let keywords_string = keywords_array.sort().join(',')
+    const keywordsOutput = component.keywordsOutput.split(',').map(Function.prototype.call, String.prototype.trim).sort().join(',')
+    const keywordsString = keywordsArray.sort().join(',')
     expect(
-      keywords_string.includes(keywords_output)
+      keywordsString.includes(keywordsOutput)
     ).toBe(true);
   });
 
   it('should generate random description', async() => {
-    component.description_input = 'Ala ma {kota|kotka|zwierzątko}';
+    component.descriptionInput = 'Ala ma {kota|kotka|zwierzątko}';
     component.generateDescription();
     expect(
-      ["Ala ma kota","Ala ma kotka","Ala ma zwierzątko"].includes(component.description_output)
+      ['Ala ma kota','Ala ma kotka','Ala ma zwierzątko'].includes(component.descriptionOutput)
     ).toBe(true);
   });
 });

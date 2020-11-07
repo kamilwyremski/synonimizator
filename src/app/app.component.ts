@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -6,26 +6,35 @@ import { CookieService } from 'ngx-cookie-service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+
+export class AppComponent implements OnInit{
+
+  @ViewChild('descriptionInputEl',{static: false}) descriptionInputEl: ElementRef;
 
   constructor( private cookieService: CookieService ) { }
 
-  title_input = '';
-  keywords_input = '';
-  description_input = '';
-  description_input_div = '';
-  ngOnInit(): void {
-    this.title_input = this.cookieService.get('title_input');
-    this.keywords_input = this.cookieService.get('keywords_input');
-    this.description_input = this.cookieService.get('description_input');
-    this.description_input_div = this.cookieService.get('description_input_div');
+  titleInput = '';
+  keywordsInput = '';
+  descriptionInput = '';
+  descriptionInputDiv = '';
+  alertCopyToClipboard = false;
+  titleOutput = '';
+  keywordsOutput = '';
+  descriptionOutput = '';
+  descriptionIsEdited = false;
+  descriptionInputHeight = 200;
+
+  ngOnInit(){
+    this.titleInput = this.cookieService.get('title_input');
+    this.keywordsInput = this.cookieService.get('keywords_input');
+    this.descriptionInput = this.cookieService.get('description_input');
+    this.descriptionInputDiv = this.cookieService.get('description_input_div');
   }
 
-  alertCopyToClipboard = false;
   copyToClipboard(val: string){
     this.alertCopyToClipboard = true;
     setTimeout(() => this.alertCopyToClipboard=false, 1500);
-    let selBox = document.createElement('textarea');
+    const selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';
     selBox.style.left = '0';
     selBox.style.top = '0';
@@ -37,60 +46,63 @@ export class AppComponent {
     document.execCommand('copy');
     document.body.removeChild(selBox);
   }
-  title_output = '';
+
   generateTitle() {
-    let title_array = this.title_input.split('\n').filter(Boolean);
-    this.title_output = title_array[Math.floor(Math.random()*title_array.length)];
-    this.cookieService.set('title_input', this.title_input);
+    const titleArray = this.titleInput.split('\n').filter(Boolean);
+    this.titleOutput = titleArray[Math.floor(Math.random()*titleArray.length)];
+    this.cookieService.set('title_input', this.titleInput);
   }
+
   copyTitleToClipboard(){
-    this.copyToClipboard(this.title_output);
+    this.copyToClipboard(this.titleOutput);
   }
-  keywords_output = '';
+
   generateKeywords(){
-    let keywords_array = this.keywords_input.split(',').map(s => s.trim());
-    for (let i = keywords_array.length - 1; i > 0; i--) {
+    const keywordsArray = this.keywordsInput.split(',').map(s => s.trim());
+    for (let i = keywordsArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [keywords_array[i], keywords_array[j]] = [keywords_array[j], keywords_array[i]];
+      [keywordsArray[i], keywordsArray[j]] = [keywordsArray[j], keywordsArray[i]];
     }
-    this.keywords_output = keywords_array.join(', ');
-    this.cookieService.set('keywords_input', this.keywords_input);
+    this.keywordsOutput = keywordsArray.join(', ');
+    this.cookieService.set('keywords_input', this.keywordsInput);
   }
+
   copyKeywordsToClipboard(){
-    this.copyToClipboard(this.keywords_output);
+    this.copyToClipboard(this.keywordsOutput);
   }
-  description_output = '';
-  descriptionIsEdited = false;
-  descriptionInputHeight = 200;
+
   generateDescription(){
-    this.description_output = '';
-    let description = this.description_input.replace(/<span class="text-success">{/g, "{").replace(/}<\/span>/g, "}");
+    this.descriptionOutput = '';
+    let description = this.descriptionInput.replace(/<span class="text-success">{/g, '{').replace(/}<\/span>/g, '}');
 		let char = 0;
 		do{
 			char = description.indexOf('{');
-			this.description_output += description.substring(0, char);
-			let char2 = description.indexOf('}');
-			let synonim_array = description.substring(char+1,char2).split('|');
-			this.description_output += synonim_array[Math.floor(Math.random()*synonim_array.length)];
+			this.descriptionOutput += description.substring(0, char);
+			const char2 = description.indexOf('}');
+			const synonimArray = description.substring(char+1,char2).split('|');
+			this.descriptionOutput += synonimArray[Math.floor(Math.random()*synonimArray.length)];
 			description = description.substring(char2+1, description.length);
-		}while(description.indexOf('{')!=-1)
-    this.description_output += description;
-    this.cookieService.set('description_input', this.description_input);
+		}while(description.indexOf('{')!==-1)
+    this.descriptionOutput += description;
+    this.cookieService.set('description_input', this.descriptionInput);
   }
-  @ViewChild('descriptionInput',{static: false}) descriptionInput: ElementRef; 
+
   blurDescription(){
     this.descriptionIsEdited = false;
-    this.description_input_div = this.description_input.replace(/{/g, "<span class='text-success'>{").replace(/}/g, "}</span>").replace(/(?:\r\n|\r|\n)/g, '<br>');
-    this.descriptionInputHeight = this.descriptionInput.nativeElement.offsetHeight;
-    this.cookieService.set('description_input_div', this.description_input_div);
+    this.descriptionInputDiv = this.descriptionInput.replace(/{/g, '<span class="text-success">{').replace(/}/g, '}</span>').replace(/(?:\r\n|\r|\n)/g, '<br>');
+    this.descriptionInputHeight = this.descriptionInputEl.nativeElement.offsetHeight;
+    this.cookieService.set('description_input_div', this.descriptionInputDiv);
   }
+
   editDescription(){
     this.descriptionIsEdited = true;
-    setTimeout(() => this.descriptionInput.nativeElement.focus(), 50);
+    setTimeout(() => this.descriptionInputEl.nativeElement.focus(), 50);
   }
+
   copyDescriptionToClipboard(){
-    this.copyToClipboard(this.description_output);
+    this.copyToClipboard(this.descriptionOutput);
   }
+
   generateAll(){
     this.generateTitle();
     this.generateKeywords();

@@ -11,37 +11,37 @@
     <div class="col-md-6">
       <div class="form-group">
         <label for="title_input">Tytuł strony</label>
-        <textarea id="title_input" class="form-control" [(ngModel)]="title_input" (change)="generateTitle()"></textarea>
+        <textarea id="title_input" class="form-control" [(ngModel)]="titleInput" (change)="generateTitle()"></textarea>
       </div>
       <div class="form-group">
         <label for="keywords_input">Słowa kluczowe</label>
-        <textarea id="keywords_input" class="form-control" [(ngModel)]="keywords_input" (change)="generateKeywords()"></textarea>
+        <textarea id="keywords_input" class="form-control" [(ngModel)]="keywordsInput" (change)="generateKeywords()"></textarea>
       </div>
       <div class="form-group">
         <label for="description_input">Opis</label>
-        <div [hidden]="descriptionIsEdited" id="description_input_div" class="form-control" [innerHTML]="description_input_div" (click)="editDescription()" [style.height.px]="descriptionInputHeight"></div>
-        <textarea [hidden]="!descriptionIsEdited" id="description_input" class="form-control" [(ngModel)]="description_input" (change)="generateDescription()" (blur)="blurDescription()" #descriptionInput></textarea>
+        <div [hidden]="descriptionIsEdited" id="description_input_div" class="form-control" [innerHTML]="descriptionInputDiv" (click)="editDescription()" [style.height.px]="descriptionInputHeight"></div>
+        <textarea [hidden]="!descriptionIsEdited" id="description_input" class="form-control" [(ngModel)]="descriptionInput" (change)="generateDescription()" (blur)="blurDescription()" #descriptionInputEl></textarea>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
         <label for="title_output">Tytuł strony - wyjście</label>
         <div class="input-group">
-          <textarea id="title_output" readonly class="form-control" [(ngModel)]="title_output"></textarea>
+          <textarea id="title_output" readonly class="form-control" [(ngModel)]="titleOutput"></textarea>
           <button class="input-group-text btn btn-secondary" (click)="copyTitleToClipboard();$event.target.blur()">Kopiuj</button>
         </div>
       </div>
       <div class="form-group">
         <label for="keywords_output">Słowa kluczowe - wyjście</label>
         <div class="input-group">
-          <textarea id="keywords_output" readonly class="form-control" [(ngModel)]="keywords_output"></textarea>
+          <textarea id="keywords_output" readonly class="form-control" [(ngModel)]="keywordsOutput"></textarea>
           <button class="input-group-text btn btn-secondary" (click)="copyKeywordsToClipboard();$event.target.blur()">Kopiuj</button>
         </div>
       </div>
       <div class="form-group">
         <label for="description_output">Opis - wyjście</label>
         <div class="input-group">
-          <textarea id="description_output" class="form-control" readonly [(ngModel)]="description_output"></textarea>   
+          <textarea id="description_output" class="form-control" readonly [(ngModel)]="descriptionOutput"></textarea>   
           <button class="input-group-text btn btn-secondary" (click)="copyDescriptionToClipboard();$event.target.blur()">Kopiuj<br>do<br>schowka</button>
         </div>
       </div>
