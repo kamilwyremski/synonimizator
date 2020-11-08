@@ -30,6 +30,15 @@ export class AppComponent implements OnInit{
     this.keywordsInput = this.cookieService.get('keywords_input');
     this.descriptionInput = this.cookieService.get('description_input');
     this.descriptionInputDiv = this.cookieService.get('description_input_div');
+    if(this.titleInput){
+      this.generateTitle();
+    }
+    if(this.keywordsInput){
+      this.generateKeywords();
+    }
+    if(this.descriptionInput || this.descriptionInputDiv){
+      this.generateDescription();
+    }
   }
 
   copyToClipboard(val: string){
