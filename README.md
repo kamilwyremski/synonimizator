@@ -7,8 +7,6 @@ Ze stworzonego przez Ciebie wcześniej tekstu z synonimami, wybiera je losowo, d
 
 Projekt dostępny online pod adresem https://synonimizator.wyremski.pl/
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.2.
-
 ```
 npm install
 npm update
