@@ -9,36 +9,36 @@
   </div>
   <div class="row">
     <div class="col-md-6">
-      <div class="form-group">
+      <div class="mb-3">
         <label for="title_input">Tytuł strony</label>
         <textarea id="title_input" class="form-control" [(ngModel)]="titleInput" (change)="generateTitle()"></textarea>
       </div>
-      <div class="form-group">
+      <div class="mb-3">
         <label for="keywords_input">Słowa kluczowe</label>
         <textarea id="keywords_input" class="form-control" [(ngModel)]="keywordsInput" (change)="generateKeywords()"></textarea>
       </div>
-      <div class="form-group">
+      <div class="mb-3">
         <label for="description_input">Opis</label>
         <div [hidden]="descriptionIsEdited" id="description_input_div" class="form-control" [innerHTML]="descriptionInputDiv" (click)="editDescription()" [style.height.px]="descriptionInputHeight"></div>
         <textarea [hidden]="!descriptionIsEdited" id="description_input" class="form-control" [(ngModel)]="descriptionInput" (change)="generateDescription()" (blur)="blurDescription()" #descriptionInputEl></textarea>
       </div>
     </div>
     <div class="col-md-6">
-      <div class="form-group">
+      <div class="mb-3">
         <label for="title_output">&nbsp;</label>
         <div class="input-group">
           <textarea id="title_output" readonly class="form-control" [(ngModel)]="titleOutput"></textarea>
           <button class="input-group-text btn btn-secondary" (click)="copyTitleToClipboard()">Kopiuj</button>
         </div>
       </div>
-      <div class="form-group">
+      <div class="mb-3">
         <label for="keywords_output">&nbsp;</label>
         <div class="input-group">
           <textarea id="keywords_output" readonly class="form-control" [(ngModel)]="keywordsOutput"></textarea>
           <button class="input-group-text btn btn-secondary" (click)="copyKeywordsToClipboard()">Kopiuj</button>
         </div>
       </div>
-      <div class="form-group">
+      <div class="mb-3">
         <label for="description_output">&nbsp;</label>
         <div class="input-group">
           <textarea id="description_output" class="form-control" readonly [(ngModel)]="descriptionOutput"></textarea>   
