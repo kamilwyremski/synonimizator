@@ -28,27 +28,27 @@
         <label for="title_output">&nbsp;</label>
         <div class="input-group">
           <textarea id="title_output" readonly class="form-control" [(ngModel)]="titleOutput"></textarea>
-          <button class="input-group-text btn btn-secondary" (click)="copyTitleToClipboard();$event.target.blur()">Kopiuj</button>
+          <button class="input-group-text btn btn-secondary" (click)="copyTitleToClipboard()">Kopiuj</button>
         </div>
       </div>
       <div class="form-group">
         <label for="keywords_output">&nbsp;</label>
         <div class="input-group">
           <textarea id="keywords_output" readonly class="form-control" [(ngModel)]="keywordsOutput"></textarea>
-          <button class="input-group-text btn btn-secondary" (click)="copyKeywordsToClipboard();$event.target.blur()">Kopiuj</button>
+          <button class="input-group-text btn btn-secondary" (click)="copyKeywordsToClipboard()">Kopiuj</button>
         </div>
       </div>
       <div class="form-group">
         <label for="description_output">&nbsp;</label>
         <div class="input-group">
           <textarea id="description_output" class="form-control" readonly [(ngModel)]="descriptionOutput"></textarea>   
-          <button class="input-group-text btn btn-secondary" (click)="copyDescriptionToClipboard();$event.target.blur()">Kopiuj</button>
+          <button class="input-group-text btn btn-secondary" (click)="copyDescriptionToClipboard()">Kopiuj</button>
         </div>
       </div>
     </div>
   </div>
   <div class="text-center">
-    <button class="btn btn-primary" (click)="generateAll();$event.target.blur()">Generuj</button>
+    <button class="btn btn-primary" (click)="generateAll()">Generuj</button>
   </div>
 </div>	
 <div class="alert alert-success fade in show" id="alert_copy_to_clipboard" [hidden]="!alertCopyToClipboard">Pomyślnie skopiowano do schowka</div>

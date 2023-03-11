@@ -12,17 +12,17 @@ export class AppComponent implements OnInit {
 
   constructor(private cookieService: CookieService) {}
 
-  titleInput = "";
-  keywordsInput = "";
-  descriptionInput = "";
-  descriptionInputDiv = "";
-  alertCopyToClipboard = false;
-  alertCopyToClipboardTimeout;
-  titleOutput = "";
-  keywordsOutput = "";
-  descriptionOutput = "";
-  descriptionIsEdited = false;
-  descriptionInputHeight = 200;
+  titleInput: string = "";
+  keywordsInput: string = "";
+  descriptionInput: string = "";
+  descriptionInputDiv: string = "";
+  alertCopyToClipboard: boolean = false;
+  alertCopyToClipboardTimeout: NodeJS.Timeout;
+  titleOutput: string = "";
+  keywordsOutput: string = "";
+  descriptionOutput: string = "";
+  descriptionIsEdited: boolean = false;
+  descriptionInputHeight: number = 200;
 
   ngOnInit() {
     this.titleInput = this.cookieService.get("title_input");
@@ -50,6 +50,7 @@ export class AppComponent implements OnInit {
       1500
     );
     navigator.clipboard.writeText(val);
+    (document.activeElement as HTMLElement).blur();
   }
 
   generateTitle() {
@@ -123,5 +124,6 @@ export class AppComponent implements OnInit {
     this.generateTitle();
     this.generateKeywords();
     this.generateDescription();
+    (document.activeElement as HTMLElement).blur();
   }
 }
