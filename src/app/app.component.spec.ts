@@ -1,6 +1,7 @@
 import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+import { CookieService } from "ngx-cookie-service";
 
 describe('AppComponent', () => {
 
@@ -10,7 +11,8 @@ describe('AppComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [ FormsModule ],
-      declarations: [ AppComponent ]
+      declarations: [ AppComponent ],
+      providers: [ CookieService ],
     })
     .compileComponents();
   }));

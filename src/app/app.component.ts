@@ -23,8 +23,10 @@ export class AppComponent implements OnInit {
   descriptionOutput: string = "";
   descriptionIsEdited: boolean = false;
   descriptionInputHeight: number = 200;
+  cookieAlert: boolean = true;
 
   ngOnInit() {
+    this.cookieAlert = this.cookieService.get("cookie") != "true";
     this.titleInput = this.cookieService.get("title_input");
     this.keywordsInput = this.cookieService.get("keywords_input");
     this.descriptionInput = this.cookieService.get("description_input");
@@ -125,5 +127,10 @@ export class AppComponent implements OnInit {
     this.generateKeywords();
     this.generateDescription();
     (document.activeElement as HTMLElement).blur();
+  }
+
+  closeCookieAlert(){
+    this.cookieAlert = false;
+    this.cookieService.set("cookie", "true");
   }
 }

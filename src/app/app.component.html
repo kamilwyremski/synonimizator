@@ -55,4 +55,4 @@
 <footer class="text-center">
   <p class="small"><a href="https://blog.wyremski.pl/polityka-prywatnosci/" target="_blank" title="Polityka prywatności serwisu">Polityka prywatności</a> | Project 2019 - 2023 by <a href="http://wyremski.pl" target="_blank" title="Tworzenie Stron Internetowych">Kamil Wyremski</a></p>
 </footer>
-<cookie-law>Ta strona używa ciasteczek (cookies), dzięki którym nasz serwis może działać lepiej. <a href="https://blog.wyremski.pl/polityka-prywatnosci/" target="_blank" title="Polityka prywatności serwisu">Czytaj więcej</a></cookie-law>
+<div *ngIf="cookieAlert" id="cookieAlert" class="position-fixed bottom-0 left-0 right-0 text-center bg-light w-100 p-2">Ta strona używa ciasteczek (cookies), dzięki którym nasz serwis może działać lepiej. <a href="https://blog.wyremski.pl/polityka-prywatnosci/" target="_blank" title="Polityka prywatności serwisu">Czytaj więcej</a> <button type="button" class="ms-2 btn btn-sm btn-secondary" (click)="closeCookieAlert()">Akceptuję</button></div>
