@@ -25,8 +25,7 @@
             "assets": [
               "src/.htaccess",
               "src/assets",
-              "src/manifest.webmanifest",
-              "src/ads.txt"
+              "src/manifest.webmanifest"
             ],
             "styles": [
               "src/styles.css",
@@ -90,7 +89,10 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": [
@@ -104,5 +106,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
